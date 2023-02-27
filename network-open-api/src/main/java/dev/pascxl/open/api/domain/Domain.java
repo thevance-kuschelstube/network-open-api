@@ -1,4 +1,4 @@
-package api.domain;
+package dev.pascxl.open.api.domain;
 
 import java.util.HashMap;
 import java.util.List;

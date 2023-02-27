@@ -1,4 +1,4 @@
-package api.mongodb;
+package dev.pascxl.open.api.mongodb;
 
 import com.mongodb.client.MongoClient;
 

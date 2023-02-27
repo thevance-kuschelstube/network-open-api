@@ -1,4 +1,4 @@
-package api.mongodb;
+package dev.pascxl.open.api.mongodb;
 
 import java.util.Map;
 
@@ -8,6 +8,8 @@ import java.util.Map;
 public interface ConnectionHandler {
 
     Map<String, ConnectionProvider> connections();
+
+    GsonToBsonAdapter gsonToBsonAdapter();
 
     ConnectionProvider openConnection(String id, String string);
 
