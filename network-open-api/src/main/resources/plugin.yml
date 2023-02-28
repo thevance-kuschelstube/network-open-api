@@ -1,0 +1,6 @@
+main: dev.pascxl.open.api.imitation.BukkitImitation
+author: Pascal K.
+website: http://pascxl.de/
+version: SNAPSHOT
+api-version: 1.19
+name: API

@@ -36,9 +36,15 @@ public abstract class OpenAPI {
     protected final DomainProvider domainProvider;
     protected final MongoDatabase mongoDatabase;
 
-    protected OpenAPI(APIPlatform<?, ?> apiPlatform, ConnectionHandler connectionHandler, RedisClient redisClient, ConnectionProvider apiConnectionProvider, UtilityProvider utilityProvider, ProcessQueue processQueue, NetworkPlayerProvider networkPlayerProvider, LanguageProvider languageProvider, RankProvider rankProvider, DomainProvider domainProvider, MongoDatabase mongoDatabase) {
-        this.mongoDatabase = mongoDatabase;
+    protected OpenAPI(Class<?> initializer, APIPlatform<?, ?> apiPlatform, ConnectionHandler connectionHandler,
+                   RedisClient redisClient, ConnectionProvider apiConnectionProvider,
+                   UtilityProvider utilityProvider, ProcessQueue processQueue,
+                   NetworkPlayerProvider networkPlayerProvider, LanguageProvider languageProvider,
+                   RankProvider rankProvider, DomainProvider domainProvider,
+                   MongoDatabase mongoDatabase) {
+        System.out.println("Create instance by: " + initializer.getSimpleName() + " (" + initializer.getName() + ")");
         instance = this;
+        this.mongoDatabase = mongoDatabase;
         this.processQueue = processQueue;
         this.networkPlayerProvider = networkPlayerProvider;
         this.languageProvider = languageProvider;
