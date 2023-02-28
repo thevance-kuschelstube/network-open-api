@@ -13,4 +13,6 @@ public interface UtilityProvider {
 
     PasswordAuth passwordAuth();
 
+    LocationUtil locationUtil();
+
 }

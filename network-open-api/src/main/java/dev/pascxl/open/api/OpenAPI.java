@@ -2,6 +2,7 @@ package dev.pascxl.open.api;
 
 import com.mongodb.client.MongoDatabase;
 import dev.pascxl.open.api.async.ProcessQueue;
+import dev.pascxl.open.api.bukkit.position.PositionService;
 import dev.pascxl.open.api.domain.DomainProvider;
 import dev.pascxl.open.api.language.LanguageProvider;
 import dev.pascxl.open.api.mongodb.ConnectionHandler;
@@ -35,13 +36,14 @@ public abstract class OpenAPI {
     protected final RankProvider rankProvider;
     protected final DomainProvider domainProvider;
     protected final MongoDatabase mongoDatabase;
+    protected final PositionService positionService;
 
     protected OpenAPI(Class<?> initializer, APIPlatform<?, ?> apiPlatform, ConnectionHandler connectionHandler,
-                   RedisClient redisClient, ConnectionProvider apiConnectionProvider,
-                   UtilityProvider utilityProvider, ProcessQueue processQueue,
-                   NetworkPlayerProvider networkPlayerProvider, LanguageProvider languageProvider,
-                   RankProvider rankProvider, DomainProvider domainProvider,
-                   MongoDatabase mongoDatabase) {
+                      RedisClient redisClient, ConnectionProvider apiConnectionProvider,
+                      UtilityProvider utilityProvider, ProcessQueue processQueue,
+                      NetworkPlayerProvider networkPlayerProvider, LanguageProvider languageProvider,
+                      RankProvider rankProvider, DomainProvider domainProvider,
+                      MongoDatabase mongoDatabase, PositionService positionService) {
         System.out.println("Create instance by: " + initializer.getSimpleName() + " (" + initializer.getName() + ")");
         instance = this;
         this.mongoDatabase = mongoDatabase;
@@ -55,6 +57,7 @@ public abstract class OpenAPI {
         this.apiConnectionProvider = apiConnectionProvider;
         this.rankProvider = rankProvider;
         this.domainProvider = domainProvider;
+        this.positionService = positionService;
     }
 
     public void terminate() {
