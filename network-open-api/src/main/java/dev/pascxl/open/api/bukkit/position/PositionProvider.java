@@ -22,8 +22,8 @@ public interface PositionProvider {
 
     void deletePosition(String locationName);
 
-    Position getPosition(String positionName);
+    Position position(String positionName);
 
-    Map<String, Position> getPositions();
+    Map<String, Position> positions();
 
 }

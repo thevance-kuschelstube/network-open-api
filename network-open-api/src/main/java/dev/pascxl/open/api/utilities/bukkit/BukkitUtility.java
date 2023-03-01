@@ -1,10 +1,13 @@
 package dev.pascxl.open.api.utilities.bukkit;
 
 import com.google.common.reflect.ClassPath;
+import dev.pascxl.open.api.OpenAPI;
+import dev.pascxl.open.api.player.NetworkPlayer;
 import lombok.SneakyThrows;
 import lombok.experimental.UtilityClass;
 import org.bukkit.Bukkit;
 import org.bukkit.command.Command;
+import org.bukkit.entity.Player;
 import org.bukkit.event.Event;
 import org.bukkit.event.EventPriority;
 import org.bukkit.event.Listener;
@@ -14,10 +17,15 @@ import java.io.IOException;
 import java.lang.reflect.InvocationTargetException;
 import java.util.Arrays;
 import java.util.Set;
+import java.util.UUID;
 import java.util.function.Consumer;
 
 @UtilityClass
 public class BukkitUtility {
+
+    public NetworkPlayer<Player> networkPlayer(UUID uuid) {
+        return OpenAPI.instance().networkPlayerProvider().networkPlayer(uuid);
+    }
 
     @SneakyThrows
     public void registerCommand(JavaPlugin javaPlugin, Command command) {
