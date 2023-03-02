@@ -1,5 +1,8 @@
 package dev.pascxl.open.api.platform;
 
+import dev.pascxl.open.api.OpenAPI;
+import dev.pascxl.open.api.event.MultiPlatformEvent;
+
 import java.util.logging.Logger;
 
 /**
@@ -20,6 +23,10 @@ public interface APIPlatform<TPlayer, TInstance> {
     void terminate();
 
     void registerCollectives();
+
+    void callEvent(MultiPlatformEvent event);
+
+    void registerStuff(OpenAPI openAPI);
 
     boolean proxyPlatform();
 

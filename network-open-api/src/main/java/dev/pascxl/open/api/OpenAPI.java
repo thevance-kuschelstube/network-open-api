@@ -7,6 +7,7 @@ import dev.pascxl.open.api.bukkit.position.PositionService;
 import dev.pascxl.open.api.bukkit.scoreboard.SidebarProvider;
 import dev.pascxl.open.api.bukkit.tablist.TablistHandler;
 import dev.pascxl.open.api.domain.DomainProvider;
+import dev.pascxl.open.api.event.EventManager;
 import dev.pascxl.open.api.language.LanguageProvider;
 import dev.pascxl.open.api.mongodb.ConnectionHandler;
 import dev.pascxl.open.api.mongodb.ConnectionProvider;
@@ -43,6 +44,7 @@ public abstract class OpenAPI {
     protected final MapService mapService;
     protected final SidebarProvider sidebarProvider;
     protected final TablistHandler tablistHandler;
+    protected final EventManager eventManager;
 
     protected OpenAPI(Class<?> initializer, APIPlatform<?, ?> apiPlatform, ConnectionHandler connectionHandler,
                       RedisClient redisClient, ConnectionProvider apiConnectionProvider,
@@ -51,7 +53,7 @@ public abstract class OpenAPI {
                       RankProvider rankProvider, DomainProvider domainProvider,
                       MongoDatabase mongoDatabase, PositionService positionService,
                       MapService mapService, SidebarProvider sidebarProvider,
-                      TablistHandler tablistHandler) {
+                      TablistHandler tablistHandler, EventManager eventManager) {
         System.out.println("Create instance by: " + initializer.getSimpleName() + " (" + initializer.getName() + ")");
         instance = this;
         this.mongoDatabase = mongoDatabase;
@@ -69,6 +71,8 @@ public abstract class OpenAPI {
         this.mapService = mapService;
         this.sidebarProvider = sidebarProvider;
         this.tablistHandler = tablistHandler;
+        this.eventManager = eventManager;
+        this.apiPlatform.registerStuff(this);
     }
 
     public void terminate() {
