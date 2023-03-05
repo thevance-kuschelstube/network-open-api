@@ -17,10 +17,7 @@ import org.bukkit.inventory.meta.SkullMeta;
 
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 /**
  * ItemBuilder - API Class to create a {@link ItemStack} with just one line of Code
@@ -96,11 +93,11 @@ public class ItemBuilder {
         this.amount = item.getAmount();
         this.damage = item.getDurability();
         this.enchantments = item.getEnchantments();
-        if (item.hasItemMeta())
+        if (item.hasItemMeta() && item.getItemMeta().displayName() != null)
             this.componentdisplayName = item.getItemMeta().displayName();
-        if (item.hasItemMeta())
+        if (item.hasItemMeta() && item.getItemMeta().lore() != null)
             this.lore = item.getItemMeta().lore();
-        if (item.hasItemMeta())
+        if (item.hasItemMeta() && !item.getItemMeta().getItemFlags().isEmpty())
             flags.addAll(item.getItemMeta().getItemFlags());
     }
 
@@ -108,7 +105,7 @@ public class ItemBuilder {
      * Initalizes the ItemBuilder with a {@link FileConfiguration} ItemStack in Path
      */
     public ItemBuilder(FileConfiguration cfg, String path) {
-        this(cfg.getItemStack(path));
+        this(Objects.requireNonNull(cfg.getItemStack(path)));
     }
 
     /**

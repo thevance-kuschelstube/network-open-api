@@ -2,6 +2,7 @@ package dev.pascxl.open.api.bukkit.scoreboard;
 
 import net.kyori.adventure.text.Component;
 import org.bukkit.entity.Player;
+import org.bukkit.plugin.Plugin;
 import org.bukkit.scoreboard.Scoreboard;
 
 import java.util.List;
@@ -26,6 +27,8 @@ public interface Sidebar {
 
     BarState barState();
 
+    Sidebar titleAnimation(List<Component> components);
+
     Sidebar addIdentity(String value);
 
     Sidebar manipulateUpdateExecutor(Consumer<Sidebar> action);
@@ -35,6 +38,12 @@ public interface Sidebar {
     Sidebar updateLine(Component component, int score);
 
     Sidebar updateDisplayName(Component component);
+
+    void stopTitleAnimation();
+
+    void titleAnimationTicks(int i);
+
+    void startTitleAnimation(Plugin plugin);
 
     void generate();
 
