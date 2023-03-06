@@ -14,6 +14,7 @@ import dev.pascxl.open.api.mongodb.ConnectionProvider;
 import dev.pascxl.open.api.permissions.rank.RankProvider;
 import dev.pascxl.open.api.platform.APIPlatform;
 import dev.pascxl.open.api.player.NetworkPlayerProvider;
+import dev.pascxl.open.api.prefix.PrefixProvider;
 import dev.pascxl.open.api.redis.RedisClient;
 import dev.pascxl.open.api.utilities.UtilityProvider;
 import lombok.Getter;
@@ -45,6 +46,7 @@ public abstract class OpenAPI {
     protected final SidebarProvider sidebarProvider;
     protected final TablistHandler tablistHandler;
     protected final EventManager eventManager;
+    protected final PrefixProvider prefixProvider;
 
     protected OpenAPI(Class<?> initializer, APIPlatform<?, ?> apiPlatform, ConnectionHandler connectionHandler,
                       RedisClient redisClient, ConnectionProvider apiConnectionProvider,
@@ -53,7 +55,8 @@ public abstract class OpenAPI {
                       RankProvider rankProvider, DomainProvider domainProvider,
                       MongoDatabase mongoDatabase, PositionService positionService,
                       MapService mapService, SidebarProvider sidebarProvider,
-                      TablistHandler tablistHandler, EventManager eventManager) {
+                      TablistHandler tablistHandler, EventManager eventManager,
+                      PrefixProvider prefixProvider) {
         System.out.println("Create instance by: " + initializer.getSimpleName() + " (" + initializer.getName() + ")");
         instance = this;
         this.mongoDatabase = mongoDatabase;
@@ -72,6 +75,7 @@ public abstract class OpenAPI {
         this.sidebarProvider = sidebarProvider;
         this.tablistHandler = tablistHandler;
         this.eventManager = eventManager;
+        this.prefixProvider = prefixProvider;
         this.apiPlatform.registerStuff(this);
     }
 
