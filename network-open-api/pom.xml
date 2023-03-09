@@ -69,19 +69,19 @@
         <dependency>
             <groupId>eu.cloudnetservice.cloudnet</groupId>
             <artifactId>bridge</artifactId>
-            <version>4.0.0-RC7</version>
+            <version>4.0.0-RC8</version>
             <scope>provided</scope>
         </dependency>
         <dependency>
             <groupId>eu.cloudnetservice.cloudnet</groupId>
             <artifactId>wrapper-jvm</artifactId>
-            <version>4.0.0-RC7</version>
+            <version>4.0.0-RC8</version>
             <scope>provided</scope>
         </dependency>
         <dependency>
             <groupId>eu.cloudnetservice.cloudnet</groupId>
             <artifactId>driver</artifactId>
-            <version>4.0.0-RC7</version>
+            <version>4.0.0-RC8</version>
             <scope>provided</scope>
         </dependency>
         <dependency>
