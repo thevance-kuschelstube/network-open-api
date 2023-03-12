@@ -21,6 +21,8 @@ public interface Rank {
 
     boolean teamRank();
 
+    String discordGroupPrefix();
+
     String altColorCode();
 
     String hexColorCode();
